@@ -1,3 +1,7 @@
 .header {
-  background-color: $text;
+  background-color: blue;
+
+  @include tablets {
+    background-color: #f00;
+  }
 }

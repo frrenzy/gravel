@@ -1,11 +1,11 @@
 {
-  "name": "",
+  "name": "gravel",
   "version": "",
   "description": "",
   "main": "/src/components/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "npx webpack serve",
+    "dev": "webpack serve",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d dist",
     "editorconfig": "editorconfig-cli",
