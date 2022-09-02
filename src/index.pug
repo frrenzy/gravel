@@ -6,5 +6,38 @@ html
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
     script(defer src=require('@/pages/index.js'))
     link(href=require('@/pages/index.scss') rel='stylesheet')
-  body
-    h1 aboba
+
+  body.page
+    header.header
+      nav.header__nav: ul.header__links
+        li: a.header__link(href='#roads') Покрытия и&nbsp;градиенты
+        li: a.header__link(href='#bikes') Велосипеды
+        li: a.header__link(href='#train') Тренировки
+
+    main.main
+      section.intro
+      section.quote
+      section.roads#roads
+
+      section.bikes#bikes
+
+      section.train#train
+
+    footer.footer
+      form.footer__form(
+        action='#'
+        name='subs'
+      )
+        h2.footer__form-heading Подпишитесь на&nbsp;рассылку &mdash;
+        .footer__form-content
+          input.footer__input(
+            type='email'
+            value=''
+            placeholder='Ваш e-mail'
+            required
+            id='subs-email'
+          )
+          button.footer__submit(type='submit') ok
+      p.footer__copyright &copy;&nbsp;Road Club 2021
+      button.footer__theme-switch(type='button')
+
