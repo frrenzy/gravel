@@ -11,6 +11,11 @@ module.exports = {
   entry: {
     index: './src/index.pug',
   },
+  resolve: {
+    alias: {
+      "@": path.join(__dirname, './src/')
+    },
+  },
   mode: 'development',
   devServer: {
     static: path.resolve(__dirname, 'dist'),
@@ -48,13 +53,18 @@ module.exports = {
         test: /\.(c|sa|sc)ss$/,
         use: [
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              import: false,
+              sourceMap: true,
             },
           },
           'postcss-loader',
-          'sass-loader',
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
     ],
