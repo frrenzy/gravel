@@ -19,8 +19,8 @@
 @mixin flex($dir, $jc: start, $ai: center) {
   display: flex;
   flex-direction: $dir;
-  align-items: $ai;
   justify-content: flex-#{$jc};
+  align-items: $ai;
 }
 
 @mixin link {
@@ -33,7 +33,7 @@
 }
 
 @mixin list {
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
 }

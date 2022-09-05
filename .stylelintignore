@@ -1,5 +1,4 @@
-**/normalize.css
+src/vendor/normalize.scss
 **/normalize.min.css
 **/fonts/
 **/images/
-**/img/

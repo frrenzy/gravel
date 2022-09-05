@@ -1,8 +1,8 @@
 .header {
-  background-color: var(--primary-bg);
+  position: sticky;
   width: 100%;
   max-width: 1440px;
-  position: sticky;
+  background-color: var(--primary-bg);
 
   &__nav {
     width: calc(100% - 240px);
@@ -12,11 +12,11 @@
   &__links {
     @include list;
     @include flex(row, end);
+    gap: 34px;
     min-height: 74px;
+    font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-    font-weight: 500;
-    gap: 34px;
   }
 
   &__link {
