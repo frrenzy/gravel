@@ -1,17 +1,39 @@
+@mixin phones {
+  @media screen and (max-width: $phone) {
+    @content;
+  }
+}
+
+@mixin large-phones {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+
 @mixin tablets {
-  @media screen and (min-width: $phones) {
+  @media screen and (max-width: $desktop) {
     @content;
   }
 }
 
-@mixin desktop {
-  @media screen and (min-width: $tablets) {
-    @content;
+@mixin flex($dir, $jc: start, $ai: center) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $ai;
+  justify-content: flex-#{$jc};
+}
+
+@mixin link {
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .75;
   }
 }
 
-@mixin large-desktop {
-  @media screen and (min-width: $desktop) {
-    @content;
-  }
+@mixin list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }

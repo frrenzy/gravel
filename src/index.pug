@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang='ru')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
@@ -9,13 +9,34 @@ html
 
   body.page
     header.header
-      nav.header__nav: ul.header__links
-        li: a.header__link(href='#roads') Покрытия и&nbsp;градиенты
-        li: a.header__link(href='#bikes') Велосипеды
-        li: a.header__link(href='#train') Тренировки
+      nav.header__nav
+        button.header__burger(type='button')
+        ul.header__links
+          li: a.header__link(href='#') Домой
+          li: a.header__link(href='#roads') Покрытия и&nbsp;градиенты
+          li: a.header__link(href='#bikes') Велосипеды
+          li: a.header__link(href='#train') Тренировки
 
     main.main
       section.intro
+        h1.intro__heading Шоссе, ТТ и&nbsp;Грэвел
+        p.intro__text.
+          Триатлонные старты, горные серпантины или грейвел заезды
+          по&nbsp;живописным маршрутам&nbsp;&mdash; нужно только
+          определиться с&nbsp;выбором велосипеда и&nbsp;отправиться
+          в&nbsp;путь.
+        button.intro__button(type='button') Подробнее
+        p.intro__feat Cannondale Systemsix
+        figure.intro__feat-container
+          img.intro__feat-image(
+            src=require('@/images/bikes/cannondale.png')
+            alt='велосипед Cannondale Systemsix'
+          )
+        img.intro__photo(
+          src=require('@/images/photos/intro.png')
+          alt='фотография велосипедиста'
+        )
+
       section.quote
       section.roads#roads
 

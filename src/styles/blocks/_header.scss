@@ -1,7 +1,30 @@
 .header {
-  background-color: blue;
+  background-color: var(--primary-bg);
+  width: 100%;
+  max-width: 1440px;
+  position: sticky;
 
-  @include tablets {
-    background-color: #f00;
+  &__nav {
+    width: calc(100% - 240px);
+    margin: 0 auto;
+  }
+
+  &__links {
+    @include list;
+    @include flex(row, end);
+    min-height: 74px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    gap: 34px;
+  }
+
+  &__link {
+    @include link;
+    color: var(--primary-text);
+  }
+
+  &__burger {
+    display: none;
   }
 }

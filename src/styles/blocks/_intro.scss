@@ -1,0 +1,95 @@
+.intro {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 0 120px 120px;
+  margin: 0;
+  display: grid;
+  grid-template-areas:
+    'heading photo'
+    'text photo'
+    'button photo'
+    'feat photo';
+  gap: 50px 250px;
+  grid-template-columns: 460px 1fr;
+  grid-template-rows: repeat(3, max-content) 1fr;
+  position: relative;
+
+  &__heading {
+    grid-area: heading;
+    color: var(--primary-text);
+    font-size: 55px;
+    line-height: 60px;
+    letter-spacing: -.5px;
+    font-weight: 700;
+    margin: 60px 0 0;
+  }
+
+  &__text {
+    grid-area: text;
+    color: var(--secondary-text);
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__button {
+    grid-area: button;
+    outline: none;
+    color: #FFFFFF;
+    background-color: #24B47E;
+    border-radius: 4px;
+    border: none;
+    width: 180px;
+    height: 50px;
+    padding: 0;
+  }
+
+  &__feat-container {
+    position: absolute;
+    margin: 0;
+    top: 391px;
+    right: 384px;
+    background-color: var(--primary-bg);
+    border-radius: 20px;
+    filter: drop-shadow(-20px 60px 220px rgba(0, 0, 0, 0.2));
+    box-shadow: -20px 60px 220px rgba(0, 0, 0, 0.44);
+    width: 440px;
+    height: 300px;
+    display: flex;
+  }
+
+  &__feat-image {
+    width: 340px;
+    height: 260px;
+    margin: auto;
+  }
+
+  &__feat {
+    grid-area: feat;
+    color: var(--primary-text);
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 210px;
+    align-self: end;
+    margin: 0;
+
+    &::before {
+      background-color: #D7D4D4;
+      width: 132px;
+      height: 2px;
+      position: absolute;
+      top: 9px;
+      left: 224px;
+      content: '';
+    }
+  }
+
+  &__photo {
+    grid-area: photo;
+    aspect-ratio: 100 / 137;
+    width: 100%;
+  }
+}
