@@ -1,73 +1,125 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const PugPlugin = require('pug-plugin');
 
-module.exports = {
-  output: {
-    path: path.join(__dirname, 'dist/'),
-    publicPath: '/',
-    filename: '[name].[contenthash:8].js'
-  },
-  entry: {
-    index: './src/index.pug',
-  },
-  resolve: {
-    alias: {
-      "@": path.join(__dirname, './src/')
+module.exports = (env, argv) => {
+  const isProd = argv.mode === 'production';
+
+  return {
+    mode: 'development',
+    devtool: 'inline-source-map',
+    output: {
+      path: path.join(__dirname, 'dist'),
+      publicPath: 'auto',
+      filename: 'assets/js/[name].[contenthash:8].js',
+      chunkFilename: 'assets/js/[id].[contenthash:8].js',
+      clean: true,
     },
-  },
-  mode: 'development',
-  devServer: {
-    static: path.resolve(__dirname, 'dist'),
-    compress: true,
-    port: 8080,
-    open: true
-  },
-  plugins: [
-    new PugPlugin({
-      extractCss: {
-        filename: '[name].[contenthash:8].css',
+    resolve: {
+      alias: {
+        '@': path.join(__dirname, 'src/'),
       },
-    }),
-    new CleanWebpackPlugin(),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.pug$/,
-        loader: PugPlugin.loader,
+      extensions: ['.js', '.ts'],
+    },
+    entry: {
+      index: 'src/index.pug',
+    },
+    plugins: [
+      new PugPlugin({
+        verbose: !isProd,
+        pretty: !isProd,
+        extractCss: {
+          filename: 'assets/css/[name].[contenthash:8].css',
+        },
+      }),
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.pug$/,
+          loader: PugPlugin.loader,
+          options: {
+            embedFilters: {
+              escape: true,
+              code: {
+                className: 'language-',
+              },
+              highlight: {
+                verbose: true,
+                use: 'prismjs',
+              },
+              markdown: {
+                highlight: {
+                  verbose: true,
+                  use: 'prismjs',
+                },
+              },
+            },
+          },
+        },
+        {
+          test: /\.js$/,
+          use: 'babel-loader',
+          exclude: '/node_modules/',
+        },
+        {
+          test: /\.(c|sa|sc)ss$/,
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                import: false,
+              },
+            },
+            'postcss-loader',
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.(png|svg|jpe?g|webp|ico)$/i,
+          type: 'asset/resource',
+          resourceQuery: {
+            not: [/inline/],
+          },
+          include: /src\/images/,
+          generator: {
+            filename: 'assets/img/[name].[hash:8][ext]',
+          },
+        },
+        {
+          test: /\.(woff(2)?|ttf|otf|eot|svg)$/,
+          type: 'asset/resource',
+          include: /vendor\/fonts|node_modules/,
+          generator: {
+            filename: 'assets/fonts/[name][ext][query]',
+          },
+        },
+      ],
+    },
+    performance: {
+      hints: 'warning',
+      maxEntrypointSize: 15000 * 1024,
+      maxAssetSize: 4000 * 1024,
+    },
+    stats: {
+      colors: true,
+      preset: 'minimal',
+      loggingDebug: ['sass-loader'],
+    },
+    devServer: {
+      static: {
+        directory: path.join(process.cwd(), './dist'),
+      },
+      watchFiles: {
+        paths: ['src/**/*.*'],
         options: {
-          method: 'render',
+          usePolling: true,
         },
       },
-      {
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: '/node_modules/',
-      },
-      {
-        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(c|sa|sc)ss$/,
-        use: [
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-              import: false,
-            },
-          },
-          'postcss-loader',
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-    ],
-  },
+      open: true,
+      compress: true,
+    },
+    watchOptions: {
+      ignored: ['**/node_modules'],
+    },
+  }
 };

@@ -4,10 +4,9 @@ html(lang='ru')
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
-    script(defer src=require('@/pages/index.js'))
-    link(href=require('@/pages/index.scss') rel='stylesheet')
-
+    link(href=require('./pages/index.scss') rel='stylesheet')
   body.page
+    script(src=require('./pages/index.js'))
     header.header
       nav.header__nav
         button.header__burger(type='button')
@@ -38,6 +37,16 @@ html(lang='ru')
         )
 
       section.quote
+        blockquote.quote__text.
+          &laquo;Катайся много или мало, долго или коротко, как
+          хочешь&nbsp;&mdash; но&nbsp;катайся&raquo;
+        p.quote__author Эдди Меркс
+        p.quote__author-info Велогонщик
+        img.quote__photo(
+          src=require('@/images/photos/quote.png')
+          alt='велогонщик Эдди Меркс'
+        )
+
       section.roads#roads
 
       section.bikes#bikes
