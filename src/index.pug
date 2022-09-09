@@ -18,7 +18,7 @@ html(lang='ru')
 
     main.main
       section.intro
-        h1.intro__heading Шоссе, ТТ и&nbsp;Грэвел
+        h1.intro__title Шоссе, ТТ и&nbsp;Грэвел
         p.intro__text.
           Триатлонные старты, горные серпантины или грейвел заезды
           по&nbsp;живописным маршрутам&nbsp;&mdash; нужно только
@@ -78,6 +78,33 @@ html(lang='ru')
           li: button.roads__button.roads__button_dir_right(type='button')
 
       section.bikes#bikes
+        h2.bikes__title Велосипеды
+        ul.bikes__buttons
+          li: button.bikes__button.bikes__button_active Шоссе
+          li: button.bikes__button Грэвел
+          li: button.bikes__button ТТ
+        ul.bikes__bikes
+          li.bikes__li: a.bikes__link(href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN')
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/highway_1.png')
+                alt='Cervelo Caledonia-5'
+              )
+              figcaption.bikes__info Cervelo Caledonia-5
+          li.bikes__li: a.bikes__link(href='https://www.sigmasports.com/item/Cannondale/SystemSix-HiMOD-Ultegra-Di2-Disc-Road-Bike-2021/R82J')
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/highway_2.png')
+                alt='Cannondale Systemsix Himod'
+              )
+              figcaption.bikes__info Cannondale Systemsix Himod
+          li.bikes__li: a.bikes__link(href='https://www.sigmasports.com/item/Trek/Domane-SL-7-Force-eTap-AXS-Disc-Road-Bike-2021/RULF')
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/highway_3.png')
+                alt='Trek Domane SL-7'
+              )
+              figcaption.bikes__info Trek Domane SL-7
 
       section.train#train
 

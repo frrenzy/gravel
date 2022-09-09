@@ -16,11 +16,12 @@
   }
 }
 
-@mixin flex($dir, $jc: start, $ai: center) {
+@mixin flex($dir, $jc: start, $ai: center, $wrap: wrap) {
   display: flex;
   flex-direction: $dir;
-  justify-content: flex-#{$jc};
-  align-items: $ai;
+  flex-wrap: $wrap;
+  justify-content: if($jc != center, flex-#{$jc}, $jc);
+  align-items: if($ai != center, flex-#{$ai}, $ai);
 }
 
 @mixin link {
@@ -29,7 +30,7 @@
 
   &:hover {
     cursor: pointer;
-    opacity: .75;
+    opacity: var(--primary-opacity);
   }
 }
 
@@ -62,6 +63,7 @@
 @mixin button {
   margin: 0;
   padding: 0;
+  background: none;
   border: none;
   outline: none;
   transition: opacity .4s ease;
