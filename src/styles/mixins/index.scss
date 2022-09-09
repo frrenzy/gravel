@@ -25,6 +25,7 @@
 
 @mixin link {
   text-decoration: none;
+  transition: opacity .4s ease;
 
   &:hover {
     cursor: pointer;
@@ -36,4 +37,37 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@mixin title {
+  margin: 0;
+  padding: 0;
+  color: var(--primary-text);
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 60px;
+  letter-spacing: -.5px;
+}
+
+@mixin subtitle {
+  margin: 0;
+  padding: 0;
+  color: var(--secondary-text);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  opacity: .7;
+}
+
+@mixin button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  transition: opacity .4s ease;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .6;
+  }
 }
