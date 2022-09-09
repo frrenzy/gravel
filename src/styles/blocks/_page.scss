@@ -7,6 +7,9 @@
   --primary-opacity: #{$primary-opacity-light};
   --secondary-opacity: #{$secondary-opacity-light};
   --line: #{$line-light};
+  --toggle-bg: #{$toggle-light};
+  --input-border: #{$input-border-light};
+  --input-border-active: #{$input-border-active-light};
 
   @include flex(column);
   box-sizing: border-box;
@@ -25,5 +28,8 @@
     --primary-opacity: #{$primary-opacity-dark};
     --secondary-opacity: #{$secondary-opacity-dark};
     --line: #{$line-dark};
+    --toggle-bg: #{$toggle-dark};
+    --input-border: #{$input-border-dark};
+    --input-border-active: #{$input-border-active-dark};
   }
 }

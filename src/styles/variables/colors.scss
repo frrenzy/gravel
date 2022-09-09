@@ -4,10 +4,14 @@ $ternary-text-light: #cfcfcf;
 $primary-background-light: #f4f4f4;
 $secondary-background-light: #efefef;
 
+$input-border-light: rgba(199, 199, 199, .5);
+$input-border-active-light: #c7c7c7;
+
 $primary-opacity-light: .75;
 $secondary-opacity-light: .6;
 
 $line-light: #d7d4d4;
+$toggle-light: #ffffff;
 
 
 $primary-text-dark: #ffffff;
@@ -16,10 +20,15 @@ $ternary-text-dark: #565656;
 $primary-background-dark: #333333;
 $secondary-background-dark: #2f2f2f;
 
+$input-border-dark: rgba(125, 125, 125, .5);
+$input-border-active-dark: #7d7d7d;
+
 $primary-opacity-dark: .65;
 $secondary-opacity-dark: .5;
 
 $line-dark: #707070;
+$toggle-dark: #545454;
 
 
 $intro-button: #24b47e;
+$opacity-common: .7;

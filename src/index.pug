@@ -84,21 +84,30 @@ html(lang='ru')
           li: button.bikes__button Грэвел
           li: button.bikes__button ТТ
         ul.bikes__bikes
-          li.bikes__li: a.bikes__link(href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN')
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN'
+            target='_blank'
+          )
             figure.bikes__bike
               img.bikes__pic(
                 src=require('@/images/bikes/highway_1.png')
                 alt='Cervelo Caledonia-5'
               )
               figcaption.bikes__info Cervelo Caledonia-5
-          li.bikes__li: a.bikes__link(href='https://www.sigmasports.com/item/Cannondale/SystemSix-HiMOD-Ultegra-Di2-Disc-Road-Bike-2021/R82J')
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cannondale/SystemSix-HiMOD-Ultegra-Di2-Disc-Road-Bike-2021/R82J'
+            target='_blank'
+          )
             figure.bikes__bike
               img.bikes__pic(
                 src=require('@/images/bikes/highway_2.png')
                 alt='Cannondale Systemsix Himod'
               )
               figcaption.bikes__info Cannondale Systemsix Himod
-          li.bikes__li: a.bikes__link(href='https://www.sigmasports.com/item/Trek/Domane-SL-7-Force-eTap-AXS-Disc-Road-Bike-2021/RULF')
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Trek/Domane-SL-7-Force-eTap-AXS-Disc-Road-Bike-2021/RULF'
+            target='_blank'
+          )
             figure.bikes__bike
               img.bikes__pic(
                 src=require('@/images/bikes/highway_3.png')
@@ -113,27 +122,34 @@ html(lang='ru')
           Komoot, а&nbsp;записать эти тренировки поможет приложение Strava,
           а&nbsp;также это приложение позволит построить тренировочный план.
         ul.train__links
-          li: a.train__link(href='https://www.strava.com') Strava
-          li: a.train__link(href='https://www.komoot.com') Komoot
+          li: a.train__link(
+            href='https://www.strava.com'
+            target='_blank'
+          ) Strava
+          li: a.train__link(
+            href='https://www.komoot.com'
+            target='_blank'
+          ) Komoot
         img.train__pic(
           src=require('@/images/photos/train.png')
           alt='дорога в лесу'
         )
 
-    footer.footer
+    footer.footer: .footer__container
+      h2.footer__title Подпишитесь на&nbsp;рассылку &mdash;
       form.footer__form(
         action='#'
         name='subs'
+        novalidate
       )
-        h2.footer__form-heading Подпишитесь на&nbsp;рассылку &mdash;
-        .footer__form-content
-          input.footer__input(
-            type='email'
-            value=''
-            placeholder='Ваш e-mail'
-            required
-            id='subs-email'
-          )
-          button.footer__submit(type='submit') ok
+        input.footer__input(
+          type='email'
+          value=''
+          placeholder='Ваш e-mail'
+          required
+          id='subs-email'
+        )
+        button.footer__submit(type='submit') ok
       p.footer__copyright &copy;&nbsp;Road Club 2021
       button.footer__theme-switch(type='button')
+        .footer__switch-toggle

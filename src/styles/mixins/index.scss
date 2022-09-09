@@ -60,12 +60,17 @@
   opacity: .7;
 }
 
-@mixin button {
-  margin: 0;
+%remove-outline {
   padding: 0;
+  line-height: 0;
   background: none;
   border: none;
   outline: none;
+}
+
+@mixin button {
+  @extend %remove-outline;
+  margin: 0;
   transition: opacity .4s ease;
 
   &:hover {

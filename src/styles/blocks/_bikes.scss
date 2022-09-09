@@ -24,7 +24,7 @@
     @include subtitle;
 
     &:hover {
-      opacity: .6;
+      opacity: var(--secondary-opacity);
     }
 
     &_active {
@@ -33,7 +33,7 @@
       opacity: 1;
 
       &:hover {
-        opacity: .75;
+        opacity: var(--primary-opacity);
       }
     }
   }
@@ -61,9 +61,12 @@
   }
 
   &__pic {
+    box-sizing: border-box;
     width: 100%;
     margin: 0 0 22px;
+    padding: 20px;
     background-color: $primary-background-light;
+    background-origin: content-box;
     border-radius: 20px;
     filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
     aspect-ratio: 1 / 1;
