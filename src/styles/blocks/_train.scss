@@ -1,0 +1,46 @@
+.train {
+  display: grid;
+  grid-template-rows: repeat(2, min-content) 1fr;
+  grid-template-columns: 460px 1fr;
+  grid-template-areas:
+    'title pic'
+    'text pic'
+    'links pic';
+  gap: 50px 160px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 120px;
+
+  &__title {
+    @include title;
+    grid-area: title;
+  }
+
+  &__text {
+    @include subtitle;
+    grid-area: text;
+  }
+
+  &__links {
+    @include flex(row);
+    @include list;
+    grid-area: links;
+    align-self: end;
+    gap: 30px;
+  }
+
+  &__link {
+    @include link;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    opacity: 1;
+  }
+
+  &__pic {
+    grid-area: pic;
+    width: 100%;
+    aspect-ratio: 29 / 23;
+  }
+}

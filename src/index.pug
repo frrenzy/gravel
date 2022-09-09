@@ -107,6 +107,18 @@ html(lang='ru')
               figcaption.bikes__info Trek Domane SL-7
 
       section.train#train
+        h2.train__title Тренировки
+        p.train__text.
+          Чтобы найти маршрут для тренировки можно воспользоваться сервисом
+          Komoot, а&nbsp;записать эти тренировки поможет приложение Strava,
+          а&nbsp;также это приложение позволит построить тренировочный план.
+        ul.train__links
+          li: a.train__link(href='https://www.strava.com') Strava
+          li: a.train__link(href='https://www.komoot.com') Komoot
+        img.train__pic(
+          src=require('@/images/photos/train.png')
+          alt='дорога в лесу'
+        )
 
     footer.footer
       form.footer__form(
