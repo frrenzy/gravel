@@ -88,6 +88,7 @@
 
   &__submit {
     @extend %remove-outline;
+    color: var(--primary-text);
     font-weight: 500;
     font-size: 13px;
     line-height: 28px;
@@ -116,32 +117,32 @@
     height: 24px;
     background-color: var(--toggle-bg);
     border-radius: 12px;
+  }
 
-    &::before {
-      position: absolute;
-      top: -2px;
-      left: -52px;
-      width: 28px;
-      height: 28px;
-      background-image: url('@/images/icons/sun.svg');
-      content: '';
-    }
+  &__icon {
+    position: absolute;
+    top: -2px;
+    left: -52px;
+    width: 28px;
+    height: 28px;
+    fill: var(--toggle-icon);
+    content: '';
 
-    &::after {
-      position: absolute;
-      top: -2px;
+    &:nth-child(1) {
       right: -52px;
-      width: 28px;
-      height: 28px;
-      background-image: url('@/images/icons/moon.svg');
-      content: '';
+      left: unset;
     }
   }
 
   &__switch-toggle {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     background-color: $intro-button;
-    border-radius: 11px;
+    border-radius: 10px;
+    transition: all .3s ease;
+
+    &_dark {
+      transform: translateX(22px);
+    }
   }
 }

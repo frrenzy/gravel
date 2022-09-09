@@ -8,16 +8,19 @@
   --secondary-opacity: #{$secondary-opacity-light};
   --line: #{$line-light};
   --toggle-bg: #{$toggle-light};
+  --toggle-icon: #{$toggle-icon-light};
   --input-border: #{$input-border-light};
   --input-border-active: #{$input-border-active-light};
 
   @include flex(column);
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Inter', 'Helvetica', sans-serif;
   background-color: var(--primary-bg);
+  transition: all .4s ease;
 
   &_dark {
     --primary-text: #{$primary-text-dark};
@@ -29,6 +32,7 @@
     --secondary-opacity: #{$secondary-opacity-dark};
     --line: #{$line-dark};
     --toggle-bg: #{$toggle-dark};
+    --toggle-icon: #{$toggle-icon-dark};
     --input-border: #{$input-border-dark};
     --input-border-active: #{$input-border-active-dark};
   }

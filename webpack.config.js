@@ -75,6 +75,22 @@ module.exports = (env, argv) => {
           ],
         },
         {
+          test: /\.(png|svg)$/i,
+          type: 'asset',
+          include: /assets\/images/,
+          exclude: /favicon/,
+          parser: {
+            dataUrlCondition: {
+              maxSize: 2 * 1024,
+            },
+          },
+        },
+        {
+          test: /\.(png|svg)$/i,
+          type: 'asset/inline',
+          resourceQuery: /inline/,
+        },
+        {
           test: /\.(png|svg|jpe?g|webp|ico)$/i,
           type: 'asset/resource',
           resourceQuery: {
