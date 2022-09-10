@@ -1,6 +1,20 @@
-import { anchorLinks, page, toggleButton } from '@/utils/constants.js';
+import CarouselScroller from '@/components/CarouselScroller';
 
-console.log(anchorLinks);
+import { anchorLinks, page, toggleThemeButton } from '@/utils/constants.js';
+
+
+const bikesCarousel = new CarouselScroller({
+  containerSelector: '.roads__pics-list',
+  itemsSelector: '.roads__pics-item',
+  activeItemClass: 'roads__pics-item_active',
+  nextScrollerSelector: '.roads__button_dir_right',
+  prevScrollerSelector: '.roads__button_dir_left',
+  textItemsSelectors: [
+    { selector: '.roads__title', attributeName: 'title' },
+    { selector: '.roads__text', attributeName: 'text' },
+  ]
+});
+bikesCarousel.init();
 
 Array.from(anchorLinks).forEach(link => {
   link.addEventListener('click', () => {
@@ -13,9 +27,9 @@ Array.from(anchorLinks).forEach(link => {
   });
 });
 
-toggleButton.addEventListener('click', () => {
+toggleThemeButton.addEventListener('click', () => {
   page.classList.toggle('page_dark');
-  toggleButton
+  toggleThemeButton
     .querySelector('.footer__switch-toggle')
     .classList
     .toggle('footer__switch-toggle_dark');

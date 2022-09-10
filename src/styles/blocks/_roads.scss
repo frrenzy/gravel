@@ -28,16 +28,35 @@
     position: relative;
     min-width: calc(50% - 10px);
 
-    &::before {
-      position: absolute;
-      bottom: 16px;
-      left: 0;
-      content: '';
-      z-index: 2;
-      width: 100px;
-      height: 40px;
-      background-image: url('@/images/icons/highway.svg');
-      background-size: cover;
+    &_active {
+      &::before {
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        content: '';
+        z-index: 2;
+        width: 100px;
+        height: 40px;
+        background-size: cover;
+      }
+    }
+
+    &_type_highway {
+      &::before {
+        background-image: url('@/images/icons/highway.svg');
+      }
+    }
+
+    &_type_gravel {
+      &::before {
+        background-image: url('@/images/icons/gravel.svg');
+      }
+    }
+
+    &_type_triatlon {
+      &::before {
+        background-image: url('@/images/icons/triatlon.svg');
+      }
     }
   }
 

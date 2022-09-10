@@ -48,30 +48,36 @@ html(lang='ru')
         )
 
       section.roads#roads
-        h2.roads__title Шоссе
-        p.roads__text.
-          На&nbsp;шоссейном велосипеде можно ездить по&nbsp;асфальту
-          на&nbsp;разных градиентах: будь&nbsp;то горы или равнины.
-          Гонки проходят в&nbsp;командном пелотоне, но&nbsp;тренироваться
-          можно и&nbsp;самостоятельно.
+        h2.roads__title
+        p.roads__text
         ul.roads__pics-list
-          li.roads__pics-item
+          li.roads__pics-item.roads__pics-item_type_highway(
+            data-title='Шоссе'
+            data-text='На шоссейном велосипеде можно ездить по асфальту на разных градиентах: ' +
+              'будь то горы или равнины. Гонки проходят в командном пелотоне, но тренироваться ' +
+              'можно и самостоятельно.'
+          )
             img.roads__pic(
               src=require('@/images/roads/highway.png')
               alt='фото шоссе в горах'
-              data-name='highway'
             )
-          li.roads__pics-item
+          li.roads__pics-item.roads__pics-item_type_gravel(
+            data-title='Грэвел'
+            data-text='Грэвел похож на шоссейный велосипед, но конструкция рамы немного отличается, ' +
+              'и на нём стоят более широкие покрышки, всё для того чтобы проехать по лёгкому бездорожью.'
+          )
             img.roads__pic(
               src=require('@/images/roads/gravel.png')
               alt='фото лесной дороги'
-              data-name='gravel'
             )
-          li.roads__pics-item
+          li.roads__pics-item.roads__pics-item_type_triatlon(
+            data-title='ТТ'
+            data-text='ТТ — это велосипед для триатлона или раздельного старта, гоняют на таком ' +
+              'велике только по равнинному асфальту, велик очень быстрый и аэродинамичный.'
+          )
             img.roads__pic(
               src=require('@/images/roads/triatlon.png')
               alt='фото шоссе на равнине'
-              data-name='triatlon'
             )
         ul.roads__scroll-buttons
           li: button.roads__button.roads__button_dir_left(type='button')
