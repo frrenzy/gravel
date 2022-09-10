@@ -50,6 +50,11 @@
   font-size: 55px;
   line-height: 60px;
   letter-spacing: -.5px;
+
+  @include phones {
+    font-size: 32px;
+    line-height: 40px;
+  }
 }
 
 @mixin subtitle {
@@ -60,6 +65,11 @@
   font-size: 18px;
   line-height: 28px;
   opacity: .7;
+
+  @include phones {
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 
 %remove-outline {

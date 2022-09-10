@@ -14,10 +14,26 @@
   margin: 0;
   padding: 20px 0 0 120px;
 
+  @include phones {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'heading'
+      'photo'
+      'text'
+      'button';
+    gap: 40px;
+    padding: 40px 18px 0;
+  }
+
   &__title {
     @include title;
     grid-area: heading;
     margin-top: 60px;
+
+    @include phones {
+      margin-top: 0;
+    }
   }
 
   &__text {
@@ -31,8 +47,18 @@
     width: 180px;
     height: 50px;
     color: $primary-text-dark;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 1px;
     background-color: $intro-button;
     border-radius: 4px;
+
+    @include phones {
+      width: 100%;
+      height: 46px;
+      font-weight: 600;
+    }
   }
 
   &__feat-container {
@@ -47,7 +73,6 @@
 
   &__feat-image {
     position: sticky;
-    position: -webkit-sticky;
     top: 44%;
     width: 340px;
     height: 260px;
@@ -56,6 +81,13 @@
     background-color: $primary-background-light;
     border-radius: 20px;
     filter: drop-shadow(-20px 60px 20px rgba(0, 0, 0, .07));
+
+    @include phones {
+      width: 180px;
+      height: 139px;
+      margin-left: 18px;
+      padding: 10px 25px;
+    }
   }
 
   &__feat {
@@ -78,11 +110,22 @@
       background-color: var(--line);
       content: '';
     }
+
+    @include phones {
+      display: none;
+    }
   }
 
   &__photo {
     grid-area: photo;
     aspect-ratio: 100 / 137;
     width: 100%;
+
+    @include phones {
+      box-sizing: border-box;
+      padding-left: 30px;
+      -webkit-background-origin: content-box;
+      background-origin: content-box;
+    }
   }
 }
