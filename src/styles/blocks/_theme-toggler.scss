@@ -1,0 +1,38 @@
+.theme-toggler {
+  @include button;
+  position: relative;
+  justify-self: end;
+  align-self: end;
+  width: 44px;
+  height: 24px;
+  background-color: var(--toggle-bg);
+  border-radius: 12px;
+
+  &__icon {
+    position: absolute;
+    top: -2px;
+    left: -52px;
+    width: 28px;
+    height: 28px;
+    fill: var(--toggle-icon);
+    content: '';
+
+    &:nth-child(1) {
+      right: -52px;
+      left: unset;
+    }
+  }
+
+  &__switch-toggle {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: $intro-button;
+    border-radius: 10px;
+    transition: all .3s ease;
+
+    &_dark {
+      transform: translateX(22px);
+    }
+  }
+}

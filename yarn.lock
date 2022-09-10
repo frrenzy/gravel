@@ -2732,6 +2732,11 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, 
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
   integrity sha512-8tLu60LgxF6XpdbK8OW3FA+IfTNBn1ZHGHKF4KQbEeSkajYw5PlYJcKluntgegDPTg8UkHjpet1T82vk6TQ68w==
 
+hamburgers@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/hamburgers/-/hamburgers-1.2.1.tgz#0649907688335dee3d3d248c4c7ac88351527eb0"
+  integrity sha512-uFuVVF7/MeUtRWrA+S1FGGo4iVi7RgPzZAmljBnSeDh4snOZzaQ+oB6CI1m4vKD5RGz9s70ufgiJLxgivqA26Q==
+
 handle-thing@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"

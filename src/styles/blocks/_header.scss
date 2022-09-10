@@ -7,26 +7,68 @@
   background-color: var(--primary-bg);
 
   &__nav {
+    @include flex(row, end);
     width: calc(100% - 240px);
+    height: 74px;
     margin: 0 auto;
+
+    @include phones {
+      width: calc(100% - 36px);
+    }
   }
 
   &__links {
     @include list;
     @include flex(row, end);
     gap: 34px;
+    box-sizing: border-box;
     min-height: 74px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
+
+    @include phones {
+      position: absolute;
+      top: -1000px;
+      left: 0;
+      flex-direction: column;
+      justify-content: start;
+      gap: 32px;
+      width: 100vw;
+      height: calc(100vh - 74px);
+      padding: 70px 50px 38px;
+      transition: all .4s ease;
+    }
+
+    &_opened {
+      top: 74px;
+    }
   }
 
   &__link {
     @include link;
     color: var(--primary-text);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+
+    @include phones {
+      font-size: 18px;
+    }
   }
 
   &__burger {
+    @include button;
     display: none;
+
+    @include phones {
+      display: block;
+    }
+  }
+
+  &__theme-switch {
+    display: none;
+
+    @include phones {
+      display: block;
+      margin-top: auto;
+    }
   }
 }

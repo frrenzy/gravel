@@ -7,15 +7,27 @@ html(lang='ru')
     link(href=require('./pages/index.scss') rel='stylesheet')
     link(href=require('./images/icons/favicon.svg') rel='icon')
     script(src=require('./pages/index.js') defer)
+    title Велосипедики
   body.page
     header.header
       nav.header__nav
-        button.header__burger(type='button')
+        button.header__burger.hamburger.hamburger_type_squeeze(type='button')
+          span.hamburger__box
+            span.hamburger__inner
         ul.header__links
           li: a.header__link(href='#') Домой
           li: a.header__link(data-href='#roads') Покрытия и&nbsp;градиенты
           li: a.header__link(data-href='#bikes') Велосипеды
           li: a.header__link(data-href='#train') Тренировки
+          li.header__theme-switch: button.theme-toggler(type='button')
+            img.theme-toggler__icon(
+              src=require('@/images/icons/moon.svg?inline')
+            )
+            img.theme-toggler__icon(
+              src=require('@/images/icons/sun.svg?inline')
+            )
+            span.theme-toggler__switch-toggle
+
 
     main.main
       section.intro
@@ -223,13 +235,11 @@ html(lang='ru')
         )
         button.footer__submit(type='submit') ok
       p.footer__copyright &copy;&nbsp;Road Club 2021
-      button.footer__theme-switch(type='button')
-        img.footer__icon(
+      button.footer__theme-switch.theme-toggler(type='button')
+        img.theme-toggler__icon(
           src=require('@/images/icons/moon.svg?inline')
-          alt='иконка темной темы'
         )
-        img.footer__icon(
+        img.theme-toggler__icon(
           src=require('@/images/icons/sun.svg?inline')
-          alt='иконка светлой темы'
         )
-        .footer__switch-toggle
+        span.theme-toggler__switch-toggle

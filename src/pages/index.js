@@ -54,3 +54,8 @@ document.querySelectorAll('.bikes__button').forEach(button => {
       .add('bikes__button_active');
   });
 });
+
+document.querySelector('.header__burger').addEventListener('click', () => {
+  document.querySelector('.header__links').classList.toggle('header__links_opened')
+  document.querySelector('.header__burger').classList.toggle('hamburger_active')
+})

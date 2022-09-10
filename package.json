@@ -27,6 +27,7 @@
     "css-loader": "^6.7.1",
     "cssnano": "^5.1.13",
     "gh-pages": "^4.0.0",
+    "hamburgers": "^1.2.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "markdown-it": "^13.0.1",
