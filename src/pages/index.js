@@ -16,7 +16,7 @@ const bikesCarousel = new CarouselScroller({
 });
 bikesCarousel.init();
 
-Array.from(anchorLinks).forEach(link => {
+anchorLinks.forEach(link => {
   link.addEventListener('click', () => {
     const sectionId = link.dataset.href;
     document
@@ -33,4 +33,24 @@ toggleThemeButton.addEventListener('click', () => {
     .querySelector('.footer__switch-toggle')
     .classList
     .toggle('footer__switch-toggle_dark');
+});
+
+document.querySelectorAll('.bikes__button').forEach(button => {
+  button.addEventListener('click', () => {
+    document
+      .querySelector('.bikes__type_active')
+      .classList
+      .remove('bikes__type_active');
+    document
+      .querySelector('.bikes__button_active')
+      .classList
+      .remove('bikes__button_active');
+    document
+      .querySelector(`#bikes-type-${button.dataset.type}`)
+      .classList
+      .add('bikes__type_active');
+    button
+      .classList
+      .add('bikes__button_active');
+  });
 });

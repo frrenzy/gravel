@@ -87,11 +87,11 @@ html(lang='ru')
       section.bikes#bikes
         h2.bikes__title Велосипеды
         ul.bikes__buttons
-          li: button.bikes__button.bikes__button_active Шоссе
-          li: button.bikes__button Грэвел
-          li: button.bikes__button ТТ
+          li: button.bikes__button.bikes__button_active(data-type='highway') Шоссе
+          li: button.bikes__button(data-type='gravel') Грэвел
+          li: button.bikes__button(data-type='triatlon') ТТ
 
-        ul.bikes__bikes
+        section.bikes__type.bikes__type_active#bikes-type-highway: ul.bikes__bikes
           li.bikes__li: a.bikes__link(
             href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN'
             target='_blank'
@@ -122,6 +122,70 @@ html(lang='ru')
                 alt='Trek Domane SL-7'
               )
               figcaption.bikes__info Trek Domane SL-7
+
+        section.bikes__type#bikes-type-gravel: ul.bikes__bikes
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/Aspero-GRX-810-1x-Disc-Gravel-Bike-2021/RJDE'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/gravel_1.png')
+                alt='Cervelo Aspero GRX 810'
+              )
+              figcaption.bikes__info Cervelo Aspero GRX 810
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Specialized/S-Works-Diverge-Gravel-Bike-2020/NVJ9'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/gravel_2.png')
+                alt='Specialized S-Works Diverge'
+              )
+              figcaption.bikes__info Specialized S-Works Diverge
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cannondale/Topstone-Carbon-Lefty-3-Disc-Gravel-Road-Bike-2021/PUC8'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/gravel_3.png')
+                alt='Cannondale Topstone Lefty 3'
+              )
+              figcaption.bikes__info Cannondale Topstone Lefty 3
+
+        section.bikes__type#bikes-type-triatlon: ul.bikes__bikes
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/triatlon_1.png')
+                alt='Specialized S-Works Shiv'
+              )
+              figcaption.bikes__info Specialized S-Works Shiv
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Specialized/S-Works-Shiv-Disc-Limited-Edition-Triathlon-Bike-2019/K8P9'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/triatlon_2.png')
+                alt='BMC Timemachine 01 ONE'
+              )
+              figcaption.bikes__info BMC Timemachine 01 ONE
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/P-Series-Ultegra-Di2-TT-Triathlon-Bike-2021/RM6Q'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/triatlon_3.png')
+                alt='Cervelo P-Series'
+              )
+              figcaption.bikes__info Cervelo P-Series
 
       section.train#train
         h2.train__title Тренировки
