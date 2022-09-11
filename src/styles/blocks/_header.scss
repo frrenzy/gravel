@@ -23,6 +23,7 @@
     gap: 34px;
     box-sizing: border-box;
     min-height: 74px;
+    background-color: var(--primary-bg);
 
     @include phones {
       position: absolute;
