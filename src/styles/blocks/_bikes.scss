@@ -191,6 +191,7 @@
 
     @include phones {
       margin-bottom: 16px;
+      color: $primary-text-light;
       font-size: 14px;
       line-height: 18px;
     }
