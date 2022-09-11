@@ -16,7 +16,11 @@
     margin: 0 auto;
     background-color: var(--primary-bg);
 
-    @include phones {
+    @include tablets {
+      width: calc(100% - 120px);
+    }
+
+    @include large-phones {
       position: absolute;
       top: -1000px;
       left: 0;
@@ -39,7 +43,7 @@
     gap: 34px;
     min-height: 74px;
 
-    @include phones {
+    @include large-phones {
       flex-direction: column;
       justify-content: start;
       gap: 32px;
@@ -53,7 +57,7 @@
     font-size: 14px;
     line-height: 18px;
 
-    @include phones {
+    @include large-phones {
       font-size: 18px;
     }
   }
@@ -63,7 +67,7 @@
     display: none;
     margin: 28px 18px 30px;
 
-    @include phones {
+    @include large-phones {
       display: block;
     }
   }
@@ -71,7 +75,7 @@
   &__theme-switch {
     display: none;
 
-    @include phones {
+    @include large-phones {
       display: block;
       margin-top: auto;
     }

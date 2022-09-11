@@ -112,10 +112,12 @@ export default class SwipeScroller {
   init(callback) {
     this._currentIdx = 1
     this._callback = callback;
-    this.setElements();
-    this._addScrollPlaceholders();
-    this._setEventListeners();
-    this._scrollToCurrentItem('auto');
-    this._resetPage()
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      this.setElements();
+      this._addScrollPlaceholders();
+      this._setEventListeners();
+      this._scrollToCurrentItem('auto');
+      this._resetPage()
+    }
   }
 }
