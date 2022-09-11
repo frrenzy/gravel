@@ -5,10 +5,12 @@ module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
 
   return {
-    mode: 'development',
+    mode: isProd ? 'production' : 'development',
     devtool: 'inline-source-map',
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: isProd
+        ? path.join(__dirname, 'dist')
+        : path.join(__dirname, 'build'),
       publicPath: 'auto',
       filename: 'assets/js/[name].[contenthash:8].js',
       chunkFilename: 'assets/js/[id].[contenthash:8].js',
