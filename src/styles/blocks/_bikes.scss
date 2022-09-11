@@ -11,7 +11,13 @@
   margin: 0;
   padding: 120px 120px 90px;
 
-  @include phones {
+  @include tablets {
+    grid-template-columns: 321px 1fr;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+
+  @include large-phones {
     grid-template-rows: repeat(4, min-content);
     grid-template-columns: 100%;
     grid-template-areas:
@@ -28,7 +34,7 @@
     @include title;
     grid-area: title;
 
-    @include phones {
+    @include large-phones {
       margin-bottom: 20px;
     }
   }
@@ -40,7 +46,7 @@
     justify-self: end;
     gap: 40px;
 
-    @include phones {
+    @include large-phones {
       display: none;
     }
   }
@@ -81,7 +87,7 @@
     transition: all .3s ease;
     appearance: none;
 
-    @include phones {
+    @include large-phones {
       z-index: 2;
       display: block;
       grid-area: select;
@@ -97,7 +103,7 @@
       transition: all .3s ease;
       stroke: var(--primary-text);
 
-      @include phones {
+      @include large-phones {
         z-index: 3;
         display: block;
         grid-area: select;
@@ -117,7 +123,7 @@
     display: none;
     gap: 5px;
 
-    @include phones {
+    @include large-phones {
       display: flex;
       grid-area: current;
     }
@@ -143,7 +149,7 @@
       overflow: hidden;
     }
 
-    @include phones {
+    @include large-phones {
       background-color: $primary-background-light;
       border-radius: 20px;
       filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
@@ -157,14 +163,14 @@
     gap: 30px;
     width: 100%;
 
-    @include phones {
+    @include large-phones {
       @include flex(row, $wrap: nowrap);
       overflow: hidden;
     }
   }
 
   &__li {
-    @include phones {
+    @include large-phones {
       min-width: 100%;
     }
   }
@@ -172,7 +178,7 @@
   &__link {
     @include link;
 
-    @include phones {
+    @include large-phones {
       min-width: 100%;
     }
   }
@@ -182,7 +188,7 @@
     margin: 0;
     padding: 0;
 
-    @include phones {
+    @include large-phones {
       @include flex(column);
       background-color: $primary-background-light;
     }
@@ -199,7 +205,7 @@
     filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
     aspect-ratio: 1 / 1;
 
-    @include phones {
+    @include large-phones {
       margin-bottom: 3px;
       padding: 15px;
       filter: none;
@@ -213,9 +219,12 @@
     font-size: 18px;
     line-height: 22px;
 
-    @include phones {
+    @include large-phones {
       margin-bottom: 16px;
       color: $primary-text-light;
+    }
+
+    @include phones {
       font-size: 14px;
       line-height: 18px;
     }

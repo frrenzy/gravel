@@ -46,6 +46,7 @@ export default class Options {
     this._select.addEventListener('change', () => {
       this._setActiveBikes(this._select.value);
       this._selectCallback();
+      this._select.blur();
     });
 
     this._buttons.forEach(button => {
