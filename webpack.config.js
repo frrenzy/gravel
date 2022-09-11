@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
 
   return {
     mode: isProd ? 'production' : 'development',
-    devtool: 'inline-source-map',
+    devtool: isProd ? 'source-map' : 'inline-source-map',
     output: {
       path: isProd
         ? path.join(__dirname, 'dist')
