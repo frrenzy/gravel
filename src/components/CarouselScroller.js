@@ -1,32 +1,28 @@
 export default class CarouselScroller {
-  #container
-  #items
-  #activeItemClass
-  #textItemsSelectors
-  #nextScroller
-  #prevScroller
-  #currentIdx
-  #length
-  #textElements
-
   constructor({
     containerSelector,
     itemsSelector,
-    nextScrollerSelector,
-    prevScrollerSelector,
-    activeItemClass,
-    textItemsSelectors
+    nextScroller,
+    prevScroller,
+    activeItemClass = null,
+    textItemsSelectors = []
   }) {
-    this.#container = document.querySelector(containerSelector);
-    this.#items = Array.from(document.querySelectorAll(itemsSelector));
-    this.#activeItemClass = activeItemClass;
-    this.#textItemsSelectors = textItemsSelectors;
-    this.#nextScroller = document.querySelector(nextScrollerSelector);
-    this.#prevScroller = document.querySelector(prevScrollerSelector);
+    this._containerSelector = containerSelector;
+    this._itemsSelector = itemsSelector;
+    this._activeItemClass = activeItemClass;
+    this._textItemsSelectors = textItemsSelectors;
+    this._nextScrollerSelector = nextScroller;
+    this._prevScrollerSelector = prevScroller;
+    this._nextScroller = document.querySelector(this._nextScrollerSelector);
+    this._prevScroller = document.querySelector(this._prevScrollerSelector);
   }
 
-  #setTextElements() {
-    this.#textElements = this.#textItemsSelectors.map(item => {
+  _resetPage() {
+    window.scrollTo(0, 0);
+  }
+
+  _getTextElements() {
+    this._textElements = this._textItemsSelectors.map(item => {
       return {
         element: document.querySelector(item.selector),
         source: item.attributeName
@@ -34,61 +30,96 @@ export default class CarouselScroller {
     });
   }
 
-  #addScrollPlaceholders() {
-    const endElement = this.#items[this.#length - 1].cloneNode(true);
-    const startElement = this.#items[0].cloneNode(true);
+  _addScrollPlaceholders() {
+    const endElement = this._items[this._length - 1].cloneNode(true);
+    const startElement = this._items[0].cloneNode(true);
 
-    this.#container.append(startElement);
-    this.#container.prepend(endElement);
-    this.#items = [endElement, ...this.#items, startElement];
+    this._container.append(startElement);
+    this._container.prepend(endElement);
+    this._items = [endElement, ...this._items, startElement];
   }
 
-  #checkScrollBorder = (dir) => {
-    const border = dir === 'next' ? this.#length : 0;
-    const placeholder = dir === 'next' ? 0 : this.#length;
-    this.#items[this.#currentIdx].classList.remove(this.#activeItemClass);
-    if (this.#currentIdx === border) {
-      this.#items[placeholder].scrollIntoView({
+  _removeScrollPlaceholders() {
+    this._items[0].remove();
+    this._items[this._length + 1].remove();
+  }
+
+  _checkScrollBorder = (dir) => {
+    const border = dir === 'next' ? this._length : 1;
+    const placeholder = dir === 'next' ? 0 : this._length + 1;
+    if (this._activeItemClass) {
+      this._items[this._currentIdx].classList.remove(this._activeItemClass);
+    }
+    if (this._currentIdx === border) {
+      this._items[placeholder].scrollIntoView({
         inline: 'start',
         block: 'nearest',
         behavior: 'auto'
       });
-      this.#currentIdx = placeholder;
+      this._currentIdx = placeholder;
     }
-    this.#currentIdx = dir === 'next'
-      ? this.#currentIdx + 1
-      : this.#currentIdx - 1;
+    this._currentIdx = dir === 'next'
+      ? this._currentIdx + 1
+      : this._currentIdx - 1;
   }
 
-  #scrollToCurrentItem = (behavior = 'smooth') => {
-    this.#items[this.#currentIdx].classList.add(this.#activeItemClass);
-    this.#items[this.#currentIdx].scrollIntoView({
+  _scrollToCurrentItem = (behavior = 'smooth') => {
+    if (this._activeItemClass) {
+      this._items[this._currentIdx].classList.add(this._activeItemClass);
+    }
+    this._items[this._currentIdx].scrollIntoView({
       inline: 'start',
       block: 'nearest',
       behavior
     });
-    this.#textElements.forEach(({ element, source }) => {
-      element.textContent = this.#items[this.#currentIdx].dataset[source];
+    this._textElements.forEach(({ element, source }) => {
+      element.textContent = this._items[this._currentIdx].dataset[source];
     });
   }
 
-  #setEventListeners() {
-    this.#nextScroller.addEventListener('click', () => {
-      this.#checkScrollBorder('next');
-      this.#scrollToCurrentItem();
-    });
-    this.#prevScroller.addEventListener('click', () => {
-      this.#checkScrollBorder('prev');
-      this.#scrollToCurrentItem();
-    });
+  _nextEventHandler = () => {
+    this._checkScrollBorder('next');
+    this._scrollToCurrentItem();
+  }
+
+  _prevEventHandler = () => {
+    this._checkScrollBorder('prev');
+    this._scrollToCurrentItem();
+  }
+
+  _setEventListeners() {
+    this._nextScroller.addEventListener('click', this._nextEventHandler);
+    this._prevScroller.addEventListener('click', this._prevEventHandler);
+  }
+
+  _removeEventListeners() {
+    this._nextScroller.removeEventListener('click', this._nextEventHandler);
+    this._prevScroller.removeEventListener('click', this._prevEventHandler);
+  }
+
+  _getElements() {
+    this._container = document.querySelector(this._containerSelector);
+    this._items = Array.from(this._container.querySelectorAll(this._itemsSelector));
+    this._currentIdx = 1;
+    this._length = this._items.length;
+  }
+
+  resetItems() {
+    this._removeEventListeners();
+    this._removeScrollPlaceholders();
+    this._getElements();
+    this._getTextElements();
+    this._addScrollPlaceholders();
+    this._setEventListeners();
+    this._scrollToCurrentItem('auto');
   }
 
   init() {
-    this.#currentIdx = 1;
-    this.#length = this.#items.length;
-    this.#setTextElements()
-    this.#addScrollPlaceholders();
-    this.#setEventListeners();
-    this.#scrollToCurrentItem('auto');
+    this._getElements();
+    this._getTextElements();
+    this._addScrollPlaceholders();
+    this._setEventListeners();
+    this._scrollToCurrentItem('auto');
+    this._resetPage()
   }
 }

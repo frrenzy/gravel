@@ -1,20 +1,27 @@
 import CarouselScroller from '@/components/CarouselScroller';
+import Options from '@/components/Options';
+import SwipeScroller from '@/components/SwipeScroller';
 
-import { anchorLinks, page, toggleThemeButton } from '@/utils/constants.js';
+import { anchorLinks, page, toggleThemeButtons } from '@/utils/constants.js';
 
 
-const bikesCarousel = new CarouselScroller({
+const roadsCarousel = new CarouselScroller({
   containerSelector: '.roads__pics-list',
   itemsSelector: '.roads__pics-item',
   activeItemClass: 'roads__pics-item_active',
-  nextScrollerSelector: '.roads__button_dir_right',
-  prevScrollerSelector: '.roads__button_dir_left',
+  nextScroller: '.roads__button_dir_right',
+  prevScroller: '.roads__button_dir_left',
   textItemsSelectors: [
     { selector: '.roads__title', attributeName: 'title' },
     { selector: '.roads__text', attributeName: 'text' },
   ]
 });
-bikesCarousel.init();
+roadsCarousel.init();
+
+const bikesCarousel = new SwipeScroller({
+  containerSelector: '.bikes__type_active > .bikes__bikes',
+  itemsSelector: '.bikes__li'
+});
 
 anchorLinks.forEach(link => {
   link.addEventListener('click', () => {
@@ -27,35 +34,31 @@ anchorLinks.forEach(link => {
   });
 });
 
-toggleThemeButton.addEventListener('click', () => {
-  page.classList.toggle('page_dark');
-  toggleThemeButton
-    .querySelector('.footer__switch-toggle')
-    .classList
-    .toggle('footer__switch-toggle_dark');
-});
-
-document.querySelectorAll('.bikes__button').forEach(button => {
+toggleThemeButtons.forEach(button => {
   button.addEventListener('click', () => {
-    document
-      .querySelector('.bikes__type_active')
-      .classList
-      .remove('bikes__type_active');
-    document
-      .querySelector('.bikes__button_active')
-      .classList
-      .remove('bikes__button_active');
-    document
-      .querySelector(`#bikes-type-${button.dataset.type}`)
-      .classList
-      .add('bikes__type_active');
+    page.classList.toggle('page_dark');
     button
+      .querySelector('.theme-toggler__switch-toggle')
       .classList
-      .add('bikes__button_active');
+      .toggle('theme-toggler__switch-toggle_dark');
   });
 });
 
 document.querySelector('.header__burger').addEventListener('click', () => {
-  document.querySelector('.header__links').classList.toggle('header__links_opened')
+  document.querySelector('.header__nav').classList.toggle('header__nav_opened')
   document.querySelector('.header__burger').classList.toggle('hamburger_active')
-})
+});
+
+const bikesOptions = new Options({
+  baseSelector: '.bikes',
+  selectSelector: '.bikes__select',
+  buttonSelector: '.bikes__button',
+  dotsSelector: '.bikes__current-option',
+  selectCallback: () => bikesCarousel.resetItems(),
+  activeButtonClass: 'bikes__button_active',
+  activeContentClass: 'bikes__type_active',
+  activeDotClass: 'bikes__current-option_active'
+});
+bikesOptions.setEventListeners();
+
+bikesCarousel.init(bikesOptions.setActiveDot);

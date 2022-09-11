@@ -1,3 +1,3 @@
 export const anchorLinks = document.querySelectorAll('[data-href]');
-export const toggleThemeButton = document.querySelector('.footer__theme-switch');
+export const toggleThemeButtons = document.querySelectorAll('.theme-toggler');
 export const page = document.querySelector('.page');

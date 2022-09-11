@@ -1,28 +1,19 @@
 .header {
+  @include flex(row, end);
   position: sticky;
   top: 0;
   z-index: 10;
   width: 100%;
   max-width: 1440px;
+  min-height: 74px;
   background-color: var(--primary-bg);
 
   &__nav {
-    @include flex(row, end);
+    @include flex(row, end, center);
+    box-sizing: border-box;
     width: calc(100% - 240px);
     height: 74px;
     margin: 0 auto;
-
-    @include phones {
-      width: calc(100% - 36px);
-    }
-  }
-
-  &__links {
-    @include list;
-    @include flex(row, end);
-    gap: 34px;
-    box-sizing: border-box;
-    min-height: 74px;
     background-color: var(--primary-bg);
 
     @include phones {
@@ -31,16 +22,27 @@
       left: 0;
       z-index: 10;
       flex-direction: column;
-      justify-content: start;
-      gap: 32px;
-      width: 100vw;
-      height: calc(100vh - 74px);
+      width: 100%;
+      height: 566px;
       padding: 70px 50px 38px;
       transition: all .4s ease;
     }
 
     &_opened {
       top: 74px;
+    }
+  }
+
+  &__links {
+    @include list;
+    @include flex(row, end);
+    gap: 34px;
+    min-height: 74px;
+
+    @include phones {
+      flex-direction: column;
+      justify-content: start;
+      gap: 32px;
     }
   }
 
@@ -59,6 +61,7 @@
   &__burger {
     @include button;
     display: none;
+    margin: 28px 18px 30px;
 
     @include phones {
       display: block;

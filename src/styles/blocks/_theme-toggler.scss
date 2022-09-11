@@ -1,8 +1,6 @@
 .theme-toggler {
   @include button;
   position: relative;
-  justify-self: end;
-  align-self: end;
   width: 44px;
   height: 24px;
   background-color: var(--toggle-bg);

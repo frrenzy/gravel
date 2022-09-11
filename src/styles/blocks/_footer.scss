@@ -108,5 +108,7 @@
 
   &__theme-switch {
     grid-area: toggler;
+    justify-self: end;
+    align-self: end;
   }
 }

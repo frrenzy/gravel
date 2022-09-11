@@ -2,21 +2,47 @@
   display: grid;
   grid-template-rows: min-content 1fr;
   grid-template-columns: 460px 1fr;
+  grid-template-areas:
+    'title buttons'
+    'bikes bikes';
   gap: 120px 0;
   box-sizing: border-box;
   width: 100%;
   margin: 0;
   padding: 120px 120px 90px;
 
+  @include phones {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'title'
+      'select'
+      'bikes'
+      'current';
+    justify-content: center;
+    gap: 20px;
+    padding: 120px 18px 0;
+  }
+
   &__title {
     @include title;
+    grid-area: title;
+
+    @include phones {
+      margin-bottom: 20px;
+    }
   }
 
   &__buttons {
     @include flex(row, $ai: end);
     @include list;
+    grid-area: buttons;
     justify-self: end;
     gap: 40px;
+
+    @include phones {
+      display: none;
+    }
   }
 
   &__button {
@@ -38,32 +64,104 @@
     }
   }
 
+  &__select {
+    @extend %remove-outline;
+    position: relative;
+    display: none;
+    width: 114px;
+    min-width: max-content;
+    height: 30px;
+    padding: 8px 12px;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 14px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    transition: all .3s ease;
+    appearance: none;
+
+    @include phones {
+      display: block;
+      grid-area: select;
+    }
+  }
+
+  &__current {
+    @include list;
+    @include flex(row, center);
+    display: none;
+    gap: 5px;
+
+    @include phones {
+      display: flex;
+      grid-area: current;
+    }
+
+    &-option {
+      width: 4px;
+      height: 4px;
+      fill: $circle;
+
+      &_active {
+        fill: $circle-active;
+      }
+    }
+  }
+
+  &__type {
+    display: none;
+    grid-area: bikes;
+    max-width: 100%;
+
+    &_active {
+      display: block;
+      overflow: hidden;
+    }
+
+    @include phones {
+      background-color: $primary-background-light;
+      border-radius: 20px;
+      filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
+    }
+  }
+
   &__bikes {
     @include list;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
     width: 100%;
+
+    @include phones {
+      @include flex(row, $wrap: nowrap);
+      overflow: hidden;
+    }
   }
 
-  &__type {
-    display: none;
-    grid-column: 1 / 3;
-    width: 100%;
-
-    &_active {
-      display: block;
+  &__li {
+    @include phones {
+      min-width: 100%;
     }
   }
 
   &__link {
     @include link;
+
+    @include phones {
+      min-width: 100%;
+    }
   }
 
   &__bike {
-    width: 100%;
+    min-width: 100%;
     margin: 0;
     padding: 0;
+
+    @include phones {
+      @include flex(column);
+      background-color: $primary-background-light;
+    }
   }
 
   &__pic {
@@ -76,6 +174,12 @@
     border-radius: 20px;
     filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
     aspect-ratio: 1 / 1;
+
+    @include phones {
+      margin-bottom: 3px;
+      padding: 15px;
+      filter: none;
+    }
   }
 
   &__info {
@@ -84,5 +188,11 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
+
+    @include phones {
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 }

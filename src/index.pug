@@ -10,27 +10,23 @@ html(lang='ru')
     title Велосипедики
   body.page
     header.header
+      button.header__burger.hamburger.hamburger_type_squeeze(type='button')
+        span.hamburger__box
+          span.hamburger__inner
       nav.header__nav
-        button.header__burger.hamburger.hamburger_type_squeeze(type='button')
-          span.hamburger__box
-            span.hamburger__inner
         ul.header__links
           li: a.header__link(href='#') Домой
           li: a.header__link(data-href='#roads') Покрытия и&nbsp;градиенты
           li: a.header__link(data-href='#bikes') Велосипеды
           li: a.header__link(data-href='#train') Тренировки
-          li.header__theme-switch: button.theme-toggler(type='button')
-            img.theme-toggler__icon(
-              src=require('@/images/icons/moon.svg?inline')
-            )
-            img.theme-toggler__icon(
-              src=require('@/images/icons/sun.svg?inline')
-            )
-            span.theme-toggler__switch-toggle
+        button.header__theme-switch.theme-toggler(type='button')
+          img.theme-toggler__icon(src=require('@/images/icons/moon.svg?inline'))
+          img.theme-toggler__icon(src=require('@/images/icons/sun.svg?inline'))
+          span.theme-toggler__switch-toggle
 
 
     main.main
-      section.intro.main__section
+      section.intro
         h1.intro__title Шоссе, ТТ и&nbsp;Грэвел
         p.intro__text.
           Триатлонные старты, горные серпантины или грейвел заезды
@@ -102,6 +98,10 @@ html(lang='ru')
           li: button.bikes__button.bikes__button_active(data-type='highway') Шоссе
           li: button.bikes__button(data-type='gravel') Грэвел
           li: button.bikes__button(data-type='triatlon') ТТ
+        select.bikes__select(autocomplete='off')
+          option(selected value='highway') Шоссе
+          option(value='gravel') Грэвел
+          option(value='triatlon') ТТ
 
         section.bikes__type.bikes__type_active#bikes-type-highway: ul.bikes__bikes
           li.bikes__li: a.bikes__link(
@@ -198,6 +198,16 @@ html(lang='ru')
                 alt='Cervelo P-Series'
               )
               figcaption.bikes__info Cervelo P-Series
+        .bikes__current
+          img.bikes__current-option.bikes__current-option_active(
+            src=require('@/images/icons/circle.svg?inline')
+          )
+          img.bikes__current-option(
+            src=require('@/images/icons/circle.svg?inline')
+          )
+          img.bikes__current-option(
+            src=require('@/images/icons/circle.svg?inline')
+          )
 
       section.train.main__section#train
         h2.train__title Тренировки
