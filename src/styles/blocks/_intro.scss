@@ -37,8 +37,13 @@
   &__title {
     @include title;
     grid-area: heading;
+    box-sizing: border-box;
     width: 100%;
     margin-top: 60px;
+
+    @include tablets {
+      padding-right: 30px;
+    }
 
     @include phones {
       margin-top: 0;

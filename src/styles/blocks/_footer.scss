@@ -18,7 +18,12 @@
     margin: 0 auto;
     padding: 80px 120px 60px;
 
-    @include phones {
+    @include tablets {
+      padding-right: 60px;
+      padding-left: 60px;
+    }
+
+    @include large-phones {
       grid-template-rows: repeat(3, min-content);
       grid-template-columns: 1fr min-content;
       grid-template-areas:
@@ -26,6 +31,9 @@
         'form form'
         'copyright toggler';
       gap: 40px;
+    }
+
+    @include phones {
       padding: 60px 18px 0;
     }
   }
@@ -138,6 +146,10 @@
     grid-area: toggler;
     justify-self: end;
     align-self: end;
+
+    @include tablets {
+      margin-right: 30px;
+    }
 
     @include phones {
       display: none;
