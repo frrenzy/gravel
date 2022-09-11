@@ -106,6 +106,14 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 28px;
+    visibility: hidden;
+    opacity: 0;
+
+    .footer__input:focus + & {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity .6s;
+    }
 
     &:hover {
       cursor: pointer;

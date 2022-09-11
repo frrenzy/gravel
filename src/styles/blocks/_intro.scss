@@ -42,7 +42,6 @@
   }
 
   &__button {
-    @include button;
     grid-area: button;
     width: 180px;
     height: 50px;
@@ -51,8 +50,24 @@
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 1px;
-    background-color: $intro-button;
+    background-image: linear-gradient(
+      90deg,
+      $intro-button 0%,
+      $intro-button 50%,
+      $intro-button-hover 50%,
+      $intro-button-hover 100%
+    );
+    background-size: 200%;
+    border: none;
     border-radius: 4px;
+    outline: none;
+    transition: background-position .5s ease;
+    transition-delay: .15s;
+
+    &:hover {
+      background-position: -100% 100%;
+      cursor: pointer;
+    }
 
     @include phones {
       width: 100%;
@@ -64,9 +79,9 @@
   &__feat-container {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     z-index: 3;
-    width: 100%;
+    width: 56%;
     height: 90%;
     margin: 0;
 
@@ -80,7 +95,6 @@
     top: 44%;
     width: 340px;
     height: 260px;
-    margin: 0 0 0 44%;
     padding: 20px 50px;
     background-color: $primary-background-light;
     border-radius: 20px;

@@ -15,7 +15,6 @@ html(lang='ru')
           span.hamburger__inner
       nav.header__nav
         ul.header__links
-          li: a.header__link(href='#') Домой
           li: a.header__link(data-href='#roads') Покрытия и&nbsp;градиенты
           li: a.header__link(data-href='#bikes') Велосипеды
           li: a.header__link(data-href='#train') Тренировки
@@ -102,6 +101,9 @@ html(lang='ru')
           option(selected value='highway') Шоссе
           option(value='gravel') Грэвел
           option(value='triatlon') ТТ
+        img.bikes__select-icon(
+          src=require('@/images/icons/arrow.svg?inline')
+        )
 
         section.bikes__type.bikes__type_active#bikes-type-highway: ul.bikes__bikes
           li.bikes__li: a.bikes__link(

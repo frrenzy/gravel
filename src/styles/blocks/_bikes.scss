@@ -82,8 +82,32 @@
     appearance: none;
 
     @include phones {
+      z-index: 2;
       display: block;
       grid-area: select;
+    }
+
+    &-icon {
+      display: none;
+      align-self: center;
+      width: 10px;
+      height: 20px;
+      margin: 0 0 0 92px;
+      padding: 0;
+      transition: all .3s ease;
+      stroke: var(--primary-text);
+
+      @include phones {
+        z-index: 3;
+        display: block;
+        grid-area: select;
+      }
+    }
+
+    &:focus-within {
+      & + .bikes__select-icon {
+        transform: rotate(-180deg);
+      }
     }
   }
 

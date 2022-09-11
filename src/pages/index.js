@@ -2,7 +2,16 @@ import CarouselScroller from '@/components/CarouselScroller';
 import Options from '@/components/Options';
 import SwipeScroller from '@/components/SwipeScroller';
 
-import { anchorLinks, page, toggleThemeButtons } from '@/utils/constants.js';
+import {
+  anchorLinks,
+  burger,
+  navbar,
+  page,
+  toggleThemeButtons,
+  form,
+  formInput
+} from '@/utils/constants.js';
+import { toggleHeader } from '@/utils/utils';
 
 
 const roadsCarousel = new CarouselScroller({
@@ -44,10 +53,13 @@ toggleThemeButtons.forEach(button => {
   });
 });
 
-document.querySelector('.header__burger').addEventListener('click', () => {
-  document.querySelector('.header__nav').classList.toggle('header__nav_opened')
-  document.querySelector('.header__burger').classList.toggle('hamburger_active')
-});
+burger.addEventListener('click', toggleHeader);
+
+navbar.addEventListener('click', evt => {
+  if (evt.target.classList.contains('header__link')) {
+    toggleHeader();
+  }
+})
 
 const bikesOptions = new Options({
   baseSelector: '.bikes',
@@ -62,3 +74,11 @@ const bikesOptions = new Options({
 bikesOptions.setEventListeners();
 
 bikesCarousel.init(bikesOptions.setActiveDot);
+
+form.addEventListener('submit', evt => {
+  evt.preventDefault();
+
+  formInput.value = 'Круто!';
+  formInput.blur();
+  setTimeout(() => formInput.value = '', 1000)
+});
