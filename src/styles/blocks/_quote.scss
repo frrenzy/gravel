@@ -10,7 +10,14 @@
   gap: 0 80px;
   padding: 120px 120px 0;
 
-  @include phones {
+  @include tablets {
+    grid-template-columns: 1fr 320px;
+    gap: 0 50px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+
+  @include large-phones {
     grid-template-rows: repeat(4, min-content);
     grid-template-columns: 100%;
     grid-template-areas:
@@ -19,11 +26,15 @@
       'author'
       'info';
     gap: 4px;
+  }
+
+  @include phones {
     padding: 100px 18px 0;
   }
 
   &__text {
     grid-area: text;
+    width: 100%;
     margin: 0;
     color: var(--primary-text);
     font-weight: 600;
@@ -31,8 +42,11 @@
     line-height: 44px;
     letter-spacing: -.5px;
 
-    @include phones {
+    @include large-phones {
       margin-bottom: 36px;
+    }
+
+    @include phones {
       font-size: 23px;
       line-height: 29px;
     }
@@ -72,7 +86,7 @@
     grid-area: photo;
     width: 100%;
 
-    @include phones {
+    @include large-phones {
       margin-bottom: 36px;
     }
   }
