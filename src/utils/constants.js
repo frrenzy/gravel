@@ -5,3 +5,4 @@ export const burger = document.querySelector('.header__burger');
 export const navbar = document.querySelector('.header__nav');
 export const form = document.querySelector('.footer__form');
 export const formInput = form.querySelector('.footer__input');
+export const formSubmitButton = form.querySelector('.footer__submit');

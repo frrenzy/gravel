@@ -126,6 +126,12 @@
     &:hover {
       cursor: pointer;
     }
+
+    &_active {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity .6s;
+    }
   }
 
   &__copyright {

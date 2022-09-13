@@ -3,13 +3,8 @@ import Options from '@/components/Options';
 import SwipeScroller from '@/components/SwipeScroller';
 
 import {
-  anchorLinks,
-  burger,
-  navbar,
-  page,
-  toggleThemeButtons,
-  form,
-  formInput
+  anchorLinks, burger, navbar, page, toggleThemeButtons,
+  form, formInput, formSubmitButton
 } from '@/utils/constants.js';
 import { toggleHeader } from '@/utils/utils';
 
@@ -82,3 +77,11 @@ form.addEventListener('submit', evt => {
   formInput.blur();
   setTimeout(() => formInput.value = '', 1000)
 });
+
+formInput.addEventListener('input', () => {
+  if (formInput.value.length > 0) {
+    formSubmitButton.classList.add('footer__submit_active');
+  } else {
+    formSubmitButton.classList.remove('footer__submit_active');
+  }
+})
