@@ -1,0 +1,93 @@
+.quote {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr repeat(2, min-content);
+  grid-template-columns: 1fr 470px;
+  grid-template-areas:
+    'photo text'
+    'photo author'
+    'photo info';
+  gap: 0 80px;
+  padding: 120px 120px 0;
+
+  @include tablets {
+    grid-template-columns: 1fr 320px;
+    gap: 0 50px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+
+  @include large-phones {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'photo'
+      'text'
+      'author'
+      'info';
+    gap: 4px;
+  }
+
+  @include phones {
+    padding: 100px 18px 0;
+  }
+
+  &__text {
+    grid-area: text;
+    width: 100%;
+    margin: 0;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 44px;
+    letter-spacing: -.5px;
+
+    @include large-phones {
+      margin-bottom: 36px;
+    }
+
+    @include phones {
+      font-size: 23px;
+      line-height: 29px;
+    }
+  }
+
+  &__author {
+    grid-area: author;
+    margin: 0;
+    color: var(--primary-text);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+
+    @include phones {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  &__author-info {
+    grid-area: info;
+    margin: 0;
+    color: var(--secondary-text);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    opacity: .7;
+
+    @include phones {
+      font-size: 10px;
+      line-height: 16px;
+    }
+  }
+
+  &__photo {
+    aspect-ratio: 65 / 46;
+    grid-area: photo;
+    width: 100%;
+
+    @include large-phones {
+      margin-bottom: 36px;
+    }
+  }
+}

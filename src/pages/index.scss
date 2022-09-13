@@ -1,1 +1,7 @@
-@import "@/vendor/normalize";
+@import '@/vendor/normalize.scss';
+@import '@/vendor/fonts/inter';
+
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+@import '@/styles/blocks';

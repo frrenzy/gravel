@@ -1,0 +1,232 @@
+.bikes {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 460px 1fr;
+  grid-template-areas:
+    'title buttons'
+    'bikes bikes';
+  gap: 120px 0;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 120px 120px 90px;
+
+  @include tablets {
+    grid-template-columns: 321px 1fr;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+
+  @include large-phones {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'title'
+      'select'
+      'bikes'
+      'current';
+    justify-content: center;
+    gap: 20px;
+    padding: 120px 18px 0;
+  }
+
+  &__title {
+    @include title;
+    grid-area: title;
+
+    @include large-phones {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__buttons {
+    @include flex(row, $ai: end);
+    @include list;
+    grid-area: buttons;
+    justify-self: end;
+    gap: 40px;
+
+    @include large-phones {
+      display: none;
+    }
+  }
+
+  &__button {
+    @include button;
+    @include subtitle;
+
+    &:hover {
+      opacity: var(--secondary-opacity);
+    }
+
+    &_active {
+      color: var(--primary-text);
+      font-weight: 600;
+      opacity: 1;
+
+      &:hover {
+        opacity: var(--primary-opacity);
+      }
+    }
+  }
+
+  &__select {
+    @extend %remove-outline;
+    position: relative;
+    display: none;
+    width: 114px;
+    min-width: max-content;
+    height: 30px;
+    padding: 8px 12px;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 14px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    transition: all .3s ease;
+    appearance: none;
+
+    @include large-phones {
+      z-index: 2;
+      display: block;
+      grid-area: select;
+    }
+
+    &-icon {
+      display: none;
+      align-self: center;
+      width: 10px;
+      height: 20px;
+      margin: 0 0 0 92px;
+      padding: 0;
+      transition: all .3s ease;
+      stroke: var(--primary-text);
+
+      @include large-phones {
+        z-index: 3;
+        display: block;
+        grid-area: select;
+      }
+    }
+
+    &:focus-within {
+      & + .bikes__select-icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &__current {
+    @include list;
+    @include flex(row, center);
+    display: none;
+    gap: 5px;
+
+    @include large-phones {
+      display: flex;
+      grid-area: current;
+    }
+
+    &-option {
+      width: 4px;
+      height: 4px;
+      fill: $circle;
+
+      &_active {
+        fill: $circle-active;
+      }
+    }
+  }
+
+  &__type {
+    display: none;
+    grid-area: bikes;
+    max-width: 100%;
+
+    &_active {
+      display: block;
+      overflow: hidden;
+    }
+
+    @include large-phones {
+      background-color: $primary-background-light;
+      border-radius: 20px;
+      filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
+    }
+  }
+
+  &__bikes {
+    @include list;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    width: 100%;
+
+    @include large-phones {
+      @include flex(row, $wrap: nowrap);
+      overflow: hidden;
+    }
+  }
+
+  &__li {
+    @include large-phones {
+      min-width: 100%;
+    }
+  }
+
+  &__link {
+    @include link;
+
+    @include large-phones {
+      min-width: 100%;
+    }
+  }
+
+  &__bike {
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+
+    @include large-phones {
+      @include flex(column);
+      background-color: $primary-background-light;
+    }
+  }
+
+  &__pic {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 22px;
+    padding: 20px;
+    background-color: $primary-background-light;
+    background-origin: content-box;
+    border-radius: 20px;
+    filter: drop-shadow(0 20px 140px rgba(0, 0, 0, .06));
+    aspect-ratio: 1 / 1;
+
+    @include large-phones {
+      margin-bottom: 3px;
+      padding: 15px;
+      filter: none;
+    }
+  }
+
+  &__info {
+    margin: 0;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
+    @include large-phones {
+      margin-bottom: 16px;
+      color: $primary-text-light;
+    }
+
+    @include phones {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}

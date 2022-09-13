@@ -1,0 +1,90 @@
+@mixin phones {
+  @media screen and (max-width: $phone) {
+    @content;
+  }
+}
+
+@mixin large-phones {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin tablets {
+  @media screen and (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin flex($dir, $jc: start, $ai: center, $wrap: wrap) {
+  display: flex;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  justify-content: if($jc != center, flex-#{$jc}, $jc);
+  align-items: if($ai != center, flex-#{$ai}, $ai);
+}
+
+@mixin link {
+  text-decoration: none;
+  transition: opacity .4s ease;
+
+  &:hover {
+    cursor: pointer;
+    opacity: var(--primary-opacity);
+  }
+}
+
+@mixin list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin title {
+  margin: 0;
+  padding: 0;
+  color: var(--primary-text);
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 60px;
+  letter-spacing: -.5px;
+
+  @include phones {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@mixin subtitle {
+  margin: 0;
+  padding: 0;
+  color: var(--secondary-text);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  opacity: .7;
+
+  @include phones {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+%remove-outline {
+  padding: 0;
+  line-height: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+@mixin button {
+  @extend %remove-outline;
+  margin: 0;
+  transition: opacity .4s ease;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .6;
+  }
+}

@@ -1,10 +1,260 @@
 doctype html
-html
+html(lang='ru')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
-    script(defer src=require('@/pages/index.js'))
-    link(href=require('@/pages/index.scss') rel='stylesheet')
-  body
-    h1 aboba
+    link(href=require('./pages/index.scss') rel='stylesheet')
+    link(href=require('./images/icons/favicon.svg') rel='icon')
+    script(src=require('./pages/index.js') defer)
+    title Велосипедики
+  body.page
+    header.header
+      button.header__burger.hamburger.hamburger_type_squeeze(type='button')
+        span.hamburger__box
+          span.hamburger__inner
+      nav.header__nav
+        ul.header__links
+          li: a.header__link(data-href='#roads') Покрытия и&nbsp;градиенты
+          li: a.header__link(data-href='#bikes') Велосипеды
+          li: a.header__link(data-href='#train') Тренировки
+        button.header__theme-switch.theme-toggler(type='button')
+          img.theme-toggler__icon(src=require('@/images/icons/moon.svg?inline'))
+          img.theme-toggler__icon(src=require('@/images/icons/sun.svg?inline'))
+          span.theme-toggler__switch-toggle
+
+
+    main.main
+      section.intro
+        h1.intro__title Шоссе, ТТ и&nbsp;Грэвел
+        p.intro__text.
+          Триатлонные старты, горные серпантины или грейвел заезды
+          по&nbsp;живописным маршрутам&nbsp;&mdash; нужно только
+          определиться с&nbsp;выбором велосипеда и&nbsp;отправиться
+          в&nbsp;путь.
+        button.intro__button(type='button') Подробнее
+        p.intro__feat Cannondale Systemsix
+        figure.intro__feat-container
+          img.intro__feat-image(
+            src=require('@/images/bikes/cannondale.png')
+            alt='велосипед Cannondale Systemsix'
+          )
+        img.intro__photo(
+          src=require('@/images/photos/intro.png')
+          alt='фотография велосипедиста'
+        )
+
+      section.quote.main__section
+        blockquote.quote__text.
+          &laquo;Катайся много или мало, долго или коротко, как
+          хочешь&nbsp;&mdash; но&nbsp;катайся&raquo;
+        p.quote__author Эдди Меркс
+        p.quote__author-info Велогонщик
+        img.quote__photo(
+          src=require('@/images/photos/quote.png')
+          alt='велогонщик Эдди Меркс'
+        )
+
+      section.roads.main__section#roads
+        h2.roads__title
+        p.roads__text
+        ul.roads__pics-list
+          li.roads__pics-item.roads__pics-item_type_highway(
+            data-title='Шоссе'
+            data-text='На шоссейном велосипеде можно ездить по асфальту на разных градиентах: ' +
+              'будь то горы или равнины. Гонки проходят в командном пелотоне, но тренироваться ' +
+              'можно и самостоятельно.'
+          )
+            img.roads__pic(
+              src=require('@/images/roads/highway.png')
+              alt='фото шоссе в горах'
+            )
+          li.roads__pics-item.roads__pics-item_type_gravel(
+            data-title='Грэвел'
+            data-text='Грэвел похож на шоссейный велосипед, но конструкция рамы немного отличается, ' +
+              'и на нём стоят более широкие покрышки, всё для того чтобы проехать по лёгкому бездорожью.'
+          )
+            img.roads__pic(
+              src=require('@/images/roads/gravel.png')
+              alt='фото лесной дороги'
+            )
+          li.roads__pics-item.roads__pics-item_type_triatlon(
+            data-title='ТТ'
+            data-text='ТТ — это велосипед для триатлона или раздельного старта, гоняют на таком ' +
+              'велике только по равнинному асфальту, велик очень быстрый и аэродинамичный.'
+          )
+            img.roads__pic(
+              src=require('@/images/roads/triatlon.png')
+              alt='фото шоссе на равнине'
+            )
+        ul.roads__scroll-buttons
+          li: button.roads__button.roads__button_dir_left(type='button')
+          li: button.roads__button.roads__button_dir_right(type='button')
+
+      section.bikes.main__section#bikes
+        h2.bikes__title Велосипеды
+        ul.bikes__buttons
+          li: button.bikes__button.bikes__button_active(data-type='highway') Шоссе
+          li: button.bikes__button(data-type='gravel') Грэвел
+          li: button.bikes__button(data-type='triatlon') ТТ
+        select.bikes__select(autocomplete='off')
+          option(selected value='highway') Шоссе
+          option(value='gravel') Грэвел
+          option(value='triatlon') ТТ
+        img.bikes__select-icon(
+          src=require('@/images/icons/arrow.svg?inline')
+        )
+
+        section.bikes__type.bikes__type_active#bikes-type-highway: ul.bikes__bikes
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/highway_1.png')
+                alt='Cervelo Caledonia-5'
+              )
+              figcaption.bikes__info Cervelo Caledonia-5
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cannondale/SystemSix-HiMOD-Ultegra-Di2-Disc-Road-Bike-2021/R82J'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/highway_2.png')
+                alt='Cannondale Systemsix Himod'
+              )
+              figcaption.bikes__info Cannondale Systemsix Himod
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Trek/Domane-SL-7-Force-eTap-AXS-Disc-Road-Bike-2021/RULF'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/highway_3.png')
+                alt='Trek Domane SL-7'
+              )
+              figcaption.bikes__info Trek Domane SL-7
+
+        section.bikes__type#bikes-type-gravel: ul.bikes__bikes
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/Aspero-GRX-810-1x-Disc-Gravel-Bike-2021/RJDE'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/gravel_1.png')
+                alt='Cervelo Aspero GRX 810'
+              )
+              figcaption.bikes__info Cervelo Aspero GRX 810
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Specialized/S-Works-Diverge-Gravel-Bike-2020/NVJ9'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/gravel_2.png')
+                alt='Specialized S-Works Diverge'
+              )
+              figcaption.bikes__info Specialized S-Works Diverge
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cannondale/Topstone-Carbon-Lefty-3-Disc-Gravel-Road-Bike-2021/PUC8'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/gravel_3.png')
+                alt='Cannondale Topstone Lefty 3'
+              )
+              figcaption.bikes__info Cannondale Topstone Lefty 3
+
+        section.bikes__type#bikes-type-triatlon: ul.bikes__bikes
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/Caledonia-5-Ultegra-Disc-Road-Bike-2021/RDEN'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/triatlon_1.png')
+                alt='Specialized S-Works Shiv'
+              )
+              figcaption.bikes__info Specialized S-Works Shiv
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Specialized/S-Works-Shiv-Disc-Limited-Edition-Triathlon-Bike-2019/K8P9'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/triatlon_2.png')
+                alt='BMC Timemachine 01 ONE'
+              )
+              figcaption.bikes__info BMC Timemachine 01 ONE
+          li.bikes__li: a.bikes__link(
+            href='https://www.sigmasports.com/item/Cervelo/P-Series-Ultegra-Di2-TT-Triathlon-Bike-2021/RM6Q'
+            target='_blank'
+          )
+            figure.bikes__bike
+              img.bikes__pic(
+                src=require('@/images/bikes/triatlon_3.png')
+                alt='Cervelo P-Series'
+              )
+              figcaption.bikes__info Cervelo P-Series
+        .bikes__current
+          img.bikes__current-option.bikes__current-option_active(
+            src=require('@/images/icons/circle.svg?inline')
+          )
+          img.bikes__current-option(
+            src=require('@/images/icons/circle.svg?inline')
+          )
+          img.bikes__current-option(
+            src=require('@/images/icons/circle.svg?inline')
+          )
+
+      section.train.main__section#train
+        h2.train__title Тренировки
+        p.train__text.
+          Чтобы найти маршрут для тренировки можно воспользоваться сервисом
+          Komoot, а&nbsp;записать эти тренировки поможет приложение Strava,
+          а&nbsp;также это приложение позволит построить тренировочный план.
+        ul.train__links
+          li: a.train__link(
+            href='https://www.strava.com'
+            target='_blank'
+          ) Strava
+          li: a.train__link(
+            href='https://www.komoot.com'
+            target='_blank'
+          ) Komoot
+        img.train__pic(
+          src=require('@/images/photos/train.png')
+          alt='дорога в лесу'
+        )
+
+    footer.footer: .footer__container
+      h2.footer__title Подпишитесь на&nbsp;рассылку &mdash;
+      form.footer__form(
+        action='#'
+        name='subs'
+        novalidate
+      )
+        input.footer__input(
+          type='email'
+          value=''
+          placeholder='Ваш e-mail'
+          required
+          id='subs-email'
+        )
+        button.footer__submit(type='submit') ok
+      p.footer__copyright &copy;&nbsp;Road Club 2021
+      button.footer__theme-switch.theme-toggler(type='button')
+        img.theme-toggler__icon(
+          src=require('@/images/icons/moon.svg?inline')
+        )
+        img.theme-toggler__icon(
+          src=require('@/images/icons/sun.svg?inline')
+        )
+        span.theme-toggler__switch-toggle
+      img.footer__logo(
+        src=require('@/images/icons/logo.svg?inline')
+      )

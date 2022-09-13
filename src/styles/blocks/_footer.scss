@@ -1,0 +1,179 @@
+.footer {
+  @include flex(row);
+  width: 100%;
+  background-color: var(--secondary-bg);
+
+  &__container {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    grid-template-columns: 360px 1fr;
+    grid-template-areas:
+      'title .'
+      'form .'
+      'copyright toggler';
+    gap: 50px 100px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 80px 120px 60px;
+
+    @include tablets {
+      padding-right: 60px;
+      padding-left: 60px;
+    }
+
+    @include large-phones {
+      grid-template-rows: repeat(3, min-content);
+      grid-template-columns: 1fr min-content;
+      grid-template-areas:
+        'title title'
+        'form form'
+        'copyright toggler';
+      gap: 40px;
+    }
+
+    @include phones {
+      padding: 60px 18px 0;
+    }
+  }
+
+  &__form {
+    grid-area: form;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__title {
+    grid-area: title;
+    width: 230px;
+    margin: 0;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  &__form {
+    @include flex(row);
+    gap: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    margin: 0 0 50px;
+    padding: 11px 20px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+
+      & > .footer__input::placeholder {
+        color: var(--primary-text);
+        opacity: 1;
+      }
+    }
+
+    &:has(.footer__input:focus) {
+      border-color: var(--input-border-active);
+    }
+
+    @include phones {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__input {
+    @extend %remove-outline;
+    width: calc(100% - 36px);
+    color: var(--primary-text);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 28px;
+    background-color: inherit;
+
+    &::placeholder {
+      color: var(--secondary-text);
+      opacity: $opacity-common;
+    }
+
+    &:focus::placeholder {
+      color: var(--primary-text);
+      opacity: 1;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__submit {
+    @extend %remove-outline;
+    color: var(--primary-text);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 28px;
+    visibility: hidden;
+    opacity: 0;
+
+    .footer__input:focus + & {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity .6s;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &_active {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity .6s;
+    }
+  }
+
+  &__copyright {
+    grid-area: copyright;
+    align-self: center;
+    margin: 0;
+    color: var(--ternary-text);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+
+    @include phones {
+      font-weight: 500;
+    }
+  }
+
+  &__theme-switch {
+    grid-area: toggler;
+    justify-self: end;
+    align-self: end;
+
+    @include tablets {
+      margin-right: 30px;
+    }
+
+    @include phones {
+      display: none;
+    }
+  }
+
+  &__logo {
+    display: none;
+    grid-area: toggler;
+    justify-self: end;
+    align-self: end;
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+    stroke: var(--primary-text);
+
+    @include phones {
+      display: block;
+    }
+  }
+}

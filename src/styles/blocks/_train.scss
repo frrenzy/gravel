@@ -1,0 +1,70 @@
+.train {
+  display: grid;
+  grid-template-rows: repeat(2, min-content) 1fr;
+  grid-template-columns: 460px 1fr;
+  grid-template-areas:
+    'title pic'
+    'text pic'
+    'links pic';
+  gap: 50px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 120px;
+
+  @include tablets {
+    grid-template-columns: 320px 1fr;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+
+  @include large-phones {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'title'
+      'pic'
+      'text'
+      'links';
+    gap: 40px;
+  }
+
+  @include phones {
+    padding: 120px 18px 60px;
+  }
+
+  &__title {
+    @include title;
+    grid-area: title;
+    width: 100%;
+  }
+
+  &__text {
+    @include subtitle;
+    grid-area: text;
+    width: 100%;
+  }
+
+  &__links {
+    @include flex(row);
+    @include list;
+    grid-area: links;
+    align-self: end;
+    gap: 30px;
+  }
+
+  &__link {
+    @include link;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    opacity: 1;
+  }
+
+  &__pic {
+    grid-area: pic;
+    width: 100%;
+    aspect-ratio: 29 / 23;
+    max-width: 580px;
+  }
+}

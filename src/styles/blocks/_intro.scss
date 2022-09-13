@@ -1,0 +1,168 @@
+.intro {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(3, max-content) 1fr;
+  grid-template-columns: 460px 1fr;
+  grid-template-areas:
+    'heading photo'
+    'text photo'
+    'button photo'
+    'feat photo';
+  gap: 50px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 20px 0 0 120px;
+
+  @include tablets {
+    grid-template-columns: 320px 1fr;
+    padding-left: 60px;
+  }
+
+  @include large-phones {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-columns: 100%;
+    grid-template-areas:
+      'heading'
+      'photo'
+      'text'
+      'button';
+  }
+
+  @include phones {
+    gap: 40px;
+    padding: 40px 18px 0;
+  }
+
+  &__title {
+    @include title;
+    grid-area: heading;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 60px;
+
+    @include tablets {
+      padding-right: 30px;
+    }
+
+    @include phones {
+      margin-top: 0;
+    }
+  }
+
+  &__text {
+    @include subtitle;
+    grid-area: text;
+    width: 100%;
+  }
+
+  &__button {
+    grid-area: button;
+    width: 180px;
+    height: 50px;
+    color: $primary-text-dark;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    background-image: linear-gradient(
+      90deg,
+      $intro-button 0%,
+      $intro-button 50%,
+      $intro-button-hover 50%,
+      $intro-button-hover 100%
+    );
+    background-size: 200%;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    transition: background-position .5s ease;
+    transition-delay: .15s;
+
+    &:hover {
+      background-position: -100% 100%;
+      cursor: pointer;
+    }
+
+    @include phones {
+      width: 100%;
+      height: 46px;
+      font-weight: 600;
+    }
+  }
+
+  &__feat-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    width: 56%;
+    height: 90%;
+    margin: 0;
+
+    @include large-phones {
+      width: 100%;
+      height: 68%;
+    }
+  }
+
+  &__feat-image {
+    position: sticky;
+    top: 44%;
+    width: 24vw;
+    min-width: 180px;
+    aspect-ratio: 17 / 13;
+    padding: 20px 50px;
+    background-color: $primary-background-light;
+    border-radius: 20px;
+    filter: drop-shadow(-20px 60px 20px rgba(0, 0, 0, .07));
+
+    @include phones {
+      width: 180px;
+      height: 139px;
+      margin-left: 18px;
+      padding: 10px 25px;
+    }
+  }
+
+  &__feat {
+    position: relative;
+    grid-area: feat;
+    align-self: end;
+    margin: 0;
+    padding-bottom: 210px;
+    color: var(--primary-text);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+
+    &::before {
+      position: absolute;
+      top: 9px;
+      left: 224px;
+      width: 132px;
+      height: 2px;
+      background-color: var(--line);
+      content: '';
+    }
+
+    @include large-phones {
+      display: none;
+    }
+  }
+
+  &__photo {
+    grid-area: photo;
+    justify-self: end;
+    max-width: 100%;
+    max-height: 836px;
+    aspect-ratio: 100 / 137;
+
+    @include phones {
+      box-sizing: border-box;
+      padding-left: 30px;
+      -webkit-background-origin: content-box;
+      background-origin: content-box;
+    }
+  }
+}
